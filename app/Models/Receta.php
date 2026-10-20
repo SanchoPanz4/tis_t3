@@ -15,13 +15,11 @@ class Receta extends Model
         'cantidad_personas', 'categoria', 'regimen_alimenticio', 'id_usuario',
     ];
 
-    // Dueño receta (id_usuaro)
     public function autor()
     {
         return $this->belongsTo(User::class, 'id_usuario');
     }
 
-    //Ingredientes de la receta
     public function ingredientes()
     {
         return $this->belongsToMany(

@@ -6,7 +6,6 @@ use App\Models\Receta;
 
 class RecetaController extends Controller
 {
-    // GET /api/recetas/populares
     public function populares()
     {
         $puntaje = "case clasifica.valoracion_receta::text

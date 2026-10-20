@@ -30,8 +30,12 @@ return new class extends Migration
             $table->rawColumn('categoria', 'tipo_categoria');                   //Categoria y Regimen_alimenticio son dominios, y la clase blueprint no tiene un metodo para crearlos, por lo que se crean en otro archivo migrate y se les llama utilizando el metodo rawColumn
             $table->rawColumn('regimen_alimenticio', 'regimen_alimenticio'); 
             $table->foreignId('id_usuario')->constrained('users', 'id');        //Se que por defaul con el tipo de dato id, la clave primaria de la tabla usuarios seria users.id, pero como ene sta tabla el nombre del atributo es diferente, se le debe indicar la procedencia completa de la clave foranea.
-        
+            $table->string('imagen_referencial');
+            $table->string('link_receta');   
+            $table->integer('cant_valorizaciones')->default(0);
+            $table->decimal('prom_valorizacion', 3, 2);
             $table->primary(['cod_receta']);                                    //No se por que, pero smallint lo toma como priamry key, por lo que debo especificar cuales atributos son primary key.
+                                            
         }); 
 
         Schema::create('ingrediente', function (Blueprint $table) { 
